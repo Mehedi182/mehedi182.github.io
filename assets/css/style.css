@@ -275,6 +275,12 @@ h6 {
   #hero {
     background-attachment: fixed;
   }
+  .iconHandler {
+    display: grid; 
+    place-content: center; 
+    grid-column: (2, 1fr); 
+    place-items: center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1101,4 +1107,42 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+/* written by me */
+#alert-show{
+display: none;  
+}
+
+/* Download button css */
+@keyframes button-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.download-button {
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  animation: button-animation 2s infinite;
+}
+
+.button-text {
+  display: inline-block;
+  vertical-align: middle;
 }
