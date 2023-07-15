@@ -94,9 +94,9 @@
 
           <div class="col-lg-8">
             <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
+              <div class="swiper-wrapper align-items-center" id="imageSlider">
 
-                <div class="swiper-slide">
+                <!-- <div class="swiper-slide">
                   <img src="assets/img/portfolio/portfolio-details-1.jpg" alt="">
                 </div>
 
@@ -106,7 +106,7 @@
 
                 <div class="swiper-slide">
                   <img src="assets/img/portfolio/portfolio-details-3.jpg" alt="">
-                </div>
+                </div> -->
 
               </div>
               <div class="swiper-pagination"></div>
@@ -135,6 +135,8 @@
 
       </div>
     </section><!-- End Portfolio Details Section -->
+    <div id="imageContainer"></div>
+
 
   </main><!-- End #main -->
 
@@ -169,6 +171,33 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    // Get the URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const imagesParam = urlParams.get('images');
+    const imageFilenames = imagesParam.split(',');
+    console.log(imageFilenames)
+
+    if (imagesParam){
+      var imageSlider = document.getElementById("imageSlider");
+
+      // debugger;
+      for(let i=1; i <= parseInt(imageFilenames[1]); i++){
+        console.log(i)
+        let filename = imageFilenames[0]
+        filename = `assets/img/portfolio/${filename}/img${i}.jpg`
+        console.log(filename)
+        var swiperSlide = document.createElement("div");
+        swiperSlide.className = "swiper-slide";
+        var img = document.createElement("img");
+        img.src = filename; // Adjust the path if necessary
+        img.alt = "";
+        swiperSlide.appendChild(img);
+        imageSlider.appendChild(swiperSlide);
+      }
+    }
+
+</script>
 
 </body>
 
