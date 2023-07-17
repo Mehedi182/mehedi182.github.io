@@ -161,15 +161,15 @@
             <div class="portfolio-info">
               <h3>Project information</h3>
               <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
+                <!-- <li><strong>Category</strong>: Web design</li> -->
+                <li><strong>Project Name</strong>: <span id="project-name">TB Training Management Information System</span></li>
+                <li><strong>Client</strong>: <span id="client">ASU Company</span></li>
+                <li><strong>Project URL</strong>: <a href="#" id="href_link"><span id="live_link">www.example.com</span></a></li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
-              <p>
+              <h2 id="project-data-name">This is an example of portfolio detail</h2>
+              <p id="project-detail">
                 Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
               </p>
             </div>
@@ -212,26 +212,25 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="./script.js"> </script>
   <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
   <script>
     // Get the URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const imagesParam = urlParams.get('images');
     const imageFilenames = imagesParam.split(',');
-    console.log(imageFilenames)
 
     if (imagesParam){
       var imageSlider = document.getElementById("imageSlider");
 
       // debugger;
       for(let i=1; i <= parseInt(imageFilenames[1]); i++){
-        console.log(i)
         let filename = imageFilenames[0]
         filename = `assets/img/portfolio/${filename}/img${i}.jpg`
-        console.log(filename)
         var swiperSlide = document.createElement("div");
         swiperSlide.className = "swiper-slide";
         var img = document.createElement("img");
@@ -241,7 +240,52 @@
         imageSlider.appendChild(swiperSlide);
       }
     }
+    portfolio_data = [
+      {
+        'trmis':{
+          'name': 'TB Training Management Information System',
+          'live_link': 'https://d1o1k266verijc.cloudfront.net',
+          'client': 'DGHS, Health Ministry, Bangladesh',
+          'details': 'National Tuberculesis Progream will track their TB trainings.This system will track trainers, trainees, courses,doctors, and staff involved in the training program. System also include various kind of report generation, upload data by using Excel, Visualiztion using Map. This software automates whole traditional system of DGHS. I have Developed the backend of the National Tuberculosis Control Program training system from scratch, including database design as Lead Backend Engineer.'
+        }
+      },
+      {
+        'ipics':{
+          'name': 'Interactive Prostate Cancer Information, Communication, and Support program (iPICS)',
+          'live_link': 'https://stg.ipics.life/',
+          'client': 'Dept. of Health Informetics, Univeristy of North Carolina <b>(UNC)</b>',
+          'details': 'National Tuberculesis Progream will track their TB trainings.This system will track trainers, trainees, courses,doctors, and staff involved in the training program. System also include various kind of report generation, upload data by using Excel, Visualiztion using Map. This software automates whole traditional system of DGHS. I have Developed the backend of the National Tuberculosis Control Program training system from scratch, including database design as Lead Backend Engineer.'
+        }
+      }
+    ]
 
+    var desiredKey = imageFilenames[0];
+    var filteredData = portfolio_data.filter(function(obj) {
+      return desiredKey in obj;
+    });
+    var project_data;
+    if (filteredData.length > 0) {
+      var project_data = filteredData[0][desiredKey];
+    } else {
+      console.log('No data found for trmis project.');
+    }
+    // Get the <li> elements by their IDs
+    var projectNameElement = document.getElementById("project-name");
+    var clientElement = document.getElementById("client");
+    var hrefURLElement = document.getElementById("href_link");
+    var projectURLElement = document.getElementById("live_link");
+    var projectName = document.getElementById("project-data-name");
+    var projectDetail = document.getElementById("project-detail");
+
+    // Update the content of the <li> elements
+    projectNameElement.innerHTML = `${project_data.name}`;
+    clientElement.innerHTML = `${project_data.client}`;
+    projectURLElement.innerHTML = `${project_data.live_link}`;
+    hrefURLElement.href = `${project_data.live_link}`
+    projectName.innerHTML = `${project_data.name}`;
+    projectDetail.innerHTML = `${project_data.details}`;
+
+    
 </script>
 
 </body>
