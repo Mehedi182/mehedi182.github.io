@@ -565,6 +565,26 @@ section {
   overflow: hidden;
   z-index: 1;
 }
+.portfolio .title-on-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: black;
+  opacity: 0;
+  transform: translateY(20%);
+}
+.portfolio-wrap:hover .title-on-image{
+  transition: all ease-in-out 0.3s;
+  transition-delay: 100ms;
+  transform: translateY(0%);
+  opacity: 1;
+}
 
 .portfolio .portfolio-wrap::before {
   content: "";
