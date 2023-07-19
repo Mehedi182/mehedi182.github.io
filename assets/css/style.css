@@ -234,7 +234,7 @@ h6 {
 
 #hero:before {
     content: "";
-    background: rgba(5, 13, 24, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
     bottom: 0;
     top: 0;
@@ -458,6 +458,27 @@ section {
     transition: 0.9s;
     background-color: #149ddd;
 }
+/* written by sajal */
+
+.grid-design{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+@media screen and (min-width: 768px){
+    .grid-design{
+        grid-template-columns: auto auto auto;
+    }
+}
+
+
+@media screen and (min-width: 1024px){
+    .grid-design{
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # Resume
